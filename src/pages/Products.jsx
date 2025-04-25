@@ -25,6 +25,7 @@ function Products() {
                     return <ProductCard product={product} key={index}></ProductCard>
                 })}
             </div>
+            {console.log("products", products)}
         </>
     );
 }

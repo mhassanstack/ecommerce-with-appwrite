@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router';
 
 function Header() {
     return (
-        <div className='flex justify-between items-center py-5 px-5 '>
+        <div className='fixed top-0 left-0 right-0 flex items-center justify-between px-5 py-5 bg-white shadow-md'>
             <div>
                 <img src={reactIcon} alt="" className='animate-spin' style={{ animationDuration: "2.5s" }} />
             </div>
