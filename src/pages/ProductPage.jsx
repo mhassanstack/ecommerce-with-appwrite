@@ -23,10 +23,10 @@ function ProductPage() {
                 <img src={productData.imageURL} alt="" />
             </div>
             <div className='col-span-7'>
-                <p>{productData.name}</p>
-                <p>${productData.price}</p>
+                <p className='text-3xl font-semibold capitalize'>{productData.name}</p>
+                <p className='my-5 text-2xl font-medium'>${productData.price}</p>
                 <p>{productData.description}</p>
-                <p>{productData.availibility}</p>
+                <p className="mt-5 text-sm">In Stock:<span className={` ${productData.availability ? "bg-green-500 border-2 border-green-600" : "bg-red-500 border-2 border-red-600"}  px-3 rounded-full text-white capitalize ml-3`}> {productData.availability ? "yes" : "no"}</span></p>
             </div>
             {console.log("productData", productData)}
         </div>
