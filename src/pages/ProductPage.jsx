@@ -18,7 +18,7 @@ function ProductPage() {
     }, [])
 
     return (
-        <div className="grid grid-cols-12 gap-x-5 items-center w-[1300px] mx-auto">
+        <div className="grid grid-cols-12 gap-x-5 items-center w-[1300px] mx-auto mt-10">
             <div className='col-span-5'>
                 <img src={productData.imageURL} alt="" />
             </div>

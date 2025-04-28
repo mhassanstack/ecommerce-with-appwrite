@@ -20,7 +20,7 @@ function Products() {
 
     return (
         <>
-            <div className="grid grid-cols-5 gap-6 px-5">
+            <div className="grid grid-cols-5 gap-6 px-5 mt-10 mb-7">
                 {products.map((product, index) => {
                     return <ProductCard product={product} key={index}></ProductCard>
                 })}

@@ -9,6 +9,10 @@ import Home from './pages/Home.jsx'
 import ProductForm from './components/ProductForm.jsx'
 import Products from './pages/Products.jsx'
 import ProductPage from './pages/ProductPage.jsx'
+import store from './store/store.js'
+import { Provider } from 'react-redux';
+import Checkout from './pages/Checkout.jsx'
+
 const router = createBrowserRouter([
   {
     path: "/", element: <Layout></Layout>,
@@ -17,12 +21,13 @@ const router = createBrowserRouter([
       { path: "/productForm", element: <ProductForm></ProductForm> },
       { path: "/products", element: <Products></Products> },
       { path: "/product-page/:id", element: <ProductPage></ProductPage> },
+      { path: "/checkout", element: <Checkout></Checkout> },
     ]
   }
 ])
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <Provider store={store}>
+    <RouterProvider router={router} />
+  </Provider>
 )
