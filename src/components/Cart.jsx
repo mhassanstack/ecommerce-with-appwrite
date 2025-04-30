@@ -74,7 +74,7 @@ function Cart({ isSidebarOpen, setIsSidebarOpen }) {
                 }
             </div>
             <div className="">
-                <Link>
+                <Link to='/checkout'>
                     <button className="relative w-full py-3 text-white transition duration-100 bg-orange-700 hover:bg-black">
                         Checkout <span className="absolute px-2 pb-[1px] text-xs bg-black rounded-full top-1/2 translate-y-[-50%] right-4"> {totalProdsInCart} items</span>
                     </button>

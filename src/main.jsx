@@ -12,6 +12,10 @@ import ProductPage from './pages/ProductPage.jsx'
 import store from './store/store.js'
 import { Provider } from 'react-redux';
 import Checkout from './pages/Checkout.jsx'
+import Signup from './pages/Signup.jsx'
+import Login from './pages/Login.jsx'
+import AddUsers from './pages/AddUsers.jsx'
+import UsersList from './pages/UsersList.jsx'
 
 const router = createBrowserRouter([
   {
@@ -21,7 +25,11 @@ const router = createBrowserRouter([
       { path: "/productForm", element: <ProductForm></ProductForm> },
       { path: "/products", element: <Products></Products> },
       { path: "/product-page/:id", element: <ProductPage></ProductPage> },
-      { path: "/checkout", element: <Checkout></Checkout> },
+      // { path: "/checkout", element: <Checkout></Checkout> },
+      { path: "/add-users", element: <AddUsers></AddUsers> },
+      { path: "/user-list", element: <UsersList></UsersList> },
+      // { path: "/signup", element: <Signup></Signup> },
+      // { path: "/login", element: <Login></Login> },
     ]
   }
 ])
