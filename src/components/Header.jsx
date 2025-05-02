@@ -10,10 +10,12 @@ function Header({ isSidebarOpen, setIsSidebarOpen }) {
             </div>
             <div className='flex gap-4 text-xl'>
                 <NavLink to='/' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Home</NavLink>
+                <NavLink to='/add-product' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Add Products</NavLink>
                 <NavLink to='/products' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Products</NavLink>
                 {/* <NavLink to='/checkout' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Checkout</NavLink> */}
                 <NavLink to='/add-users' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>AddUsers</NavLink>
                 <NavLink to='/user-list' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>User List</NavLink>
+                <NavLink to='/product-list' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Product List</NavLink>
                 {/* <NavLink to='/signup' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Signup</NavLink>
                 <NavLink to='/login' className={({ isActive }) => isActive ? "text-orange-600" : "text-black"}>Login</NavLink> */}
             </div>

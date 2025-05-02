@@ -1,14 +1,34 @@
 import { useForm } from "react-hook-form";
-import { databases, ID } from "../lib/appwrite";
+import { databases } from "../lib/appwrite";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 
-function AddUsers() {
+function EditUser() {
 
-    const { register, handleSubmit, formState, reset } = useForm()
+    const { register, handleSubmit, formState, setValue } = useForm()
     const { errors } = formState
 
-    function handleAddUser(data) {
-        const dbId = "6805edca0008558e1e75"
-        const userCollectionId = "6811f6c70001b82a585e"
+
+    const { userId } = useParams()
+    const dbId = "6805edca0008558e1e75"
+    const userCollectionId = "6811f6c70001b82a585e"
+
+    useEffect(() => {
+        databases.getDocument(dbId, userCollectionId, userId)
+            .then(response => {
+                console.log("✅ user retrieved successfully:", response)
+
+                setValue("userName", response.userName)
+                setValue("userEmail", response.userEmail)
+                setValue("userPassword", response.userPassword)
+                setValue("role", response.role)
+            })
+            .catch(error => {
+                console.log("user retrieval error: ", error)
+            })
+    }, [])
+
+    function handleEdit(data) {
 
         const payload =
         {
@@ -18,11 +38,10 @@ function AddUsers() {
             role: data.role
         }
 
-        databases.createDocument(dbId, userCollectionId, ID.unique(), payload)
+        databases.updateDocument(dbId, userCollectionId, userId, payload)
             .then(response => {
-                console.log("✅ users added successfully:", response)
-                alert("✅ users added successfully ")
-                reset()
+                console.log("✅ users updated successfully:", response)
+                alert("✅ users updated successfully ")
             })
             .catch(error => {
                 console.log(error)
@@ -33,7 +52,7 @@ function AddUsers() {
 
     return (
         <div className="mt-10">
-            <h1 className="text-4xl text-center text-black capitalize">add users</h1>
+            <h1 className="text-4xl text-center text-black capitalize">edit user</h1>
             <div className="mt-8">
                 <form action="" className="px-4 py-5 mx-auto bg-gray-100 shadow-xl w-fit rounded-xl" >
                     <div className="flex flex-col mb-4">
@@ -74,13 +93,13 @@ function AddUsers() {
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="" className="mb-1 ml-1">User Role</label>
-                        <select name="" id="" className="w-full px-3 py-2 bg-white rounded-lg shadow-lg" {...register('role')}>
+                        <select name="" id="" className="w-full px-3 py-2 bg-white rounded-lg shadow-lg"  {...register('role')}>
                             <option value="user">User</option>
                             <option value="admin">Admin</option>
                         </select>
                     </div>
                     <div className="mt-5 text-center">
-                        <button className="px-3 py-1 text-white capitalize bg-green-700 rounded-md" onClick={handleSubmit(handleAddUser)}>add user</button>
+                        <button className="px-3 py-1 text-white capitalize bg-green-700 rounded-md" onClick={handleSubmit(handleEdit)}>Edit User</button>
                     </div>
 
                 </form>
@@ -89,4 +108,4 @@ function AddUsers() {
     );
 }
 
-export default AddUsers;
+export default EditUser;
